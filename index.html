@@ -1,0 +1,64 @@
+<div class="card" >
+    <div class="card-content">
+      <h1>Hello card 1</h1>
+    </div>
+    <button class="prev">Prev</button>
+    <button class="next">Next</button>
+  </div>
+  
+  <div class="card" >
+    <div class="card-content">
+      <h1>Hello card 2</h1>
+    </div>
+    <button class="prev">Prev</button>
+    <button class="next">Next</button>
+  </div>
+  
+  <!-- Add more cards as needed -->
+  
+  <script>
+    var cards = document.getElementsByClassName('card');
+    var currentIndex = 0;
+    
+    function showCard(index) {
+      for (var i = 0; i < cards.length; i++) {
+        cards[i].style.display = 'none';
+      }
+      cards[index].style.display = 'block';
+    }
+    
+    var prevButtons = document.getElementsByClassName('prev');
+    for (var i = 0; i < prevButtons.length; i++) {
+      prevButtons[i].addEventListener('click', function() {
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : cards.length - 1;
+        showCard(currentIndex);
+      });
+    }
+    
+    var nextButtons = document.getElementsByClassName('next');
+    for (var i = 0; i < nextButtons.length; i++) {
+      nextButtons[i].addEventListener('click', function() {
+        currentIndex = (currentIndex < cards.length - 1) ? currentIndex + 1 : 0;
+        showCard(currentIndex);
+      });
+    }
+    
+    showCard(currentIndex);
+  </script>
+  <style>
+
+    body {
+        background-color: #E0E0E0;
+
+    }
+    .card {
+        background-color: #ffffff;
+        padding: 10px;
+        margin: 5px;
+        border-radius: 10px;
+        width: 95%;
+        height: 95%;
+        min-height: 95vh;
+        min-width: 98vw;
+    }
+  </style>
